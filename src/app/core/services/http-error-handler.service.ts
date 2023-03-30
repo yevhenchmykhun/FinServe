@@ -22,7 +22,7 @@ export class HttpErrorHandlerService {
  * @returns A function that handles HTTP errors.
  */
   createHandleError(serviceName = 'service'): HandleError {
-    return <T>(operation: string = 'operation', result: T = {} as T) => this.handleError(serviceName, operation, result);
+    return <T>(operation = 'operation', result: T = {} as T) => this.handleError(serviceName, operation, result);
   }
 
   /**
