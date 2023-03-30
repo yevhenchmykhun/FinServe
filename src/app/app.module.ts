@@ -1,16 +1,30 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MessageService } from 'primeng/api';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    CoreModule,
+    MessageModule,
+    ToastModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MessageService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
