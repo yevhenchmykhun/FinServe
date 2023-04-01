@@ -1,0 +1,5 @@
+{
+    "name": "FinServe",
+    "env": "$env$",
+    "api": "$api$"
+}
