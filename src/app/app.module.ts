@@ -8,15 +8,22 @@ import { CoreModule } from './core/core.module';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
+import { RoutingModule } from './routing.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    // Angular modules
     BrowserAnimationsModule,
     HttpClientModule,
+
+    // App modules
+    RoutingModule,
     CoreModule,
+
+    // PrimeNG modules
     MessageModule,
     ToastModule
   ],
