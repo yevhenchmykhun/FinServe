@@ -1,0 +1,100 @@
+.menu-item {
+    padding: 4px 10px 4px 10px;
+}
+
+.menu-item>a {
+    padding: 10px;
+    display: flex;
+    border-radius: 6px;
+    transition: all 0.05s;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+}
+
+.menu-item>a em {
+    width: 22px;
+    height: 22px;
+    font-size: 17px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -0.5em;
+    color: var(--text-color);
+    transition: color 0.05s;
+}
+
+.menu-item>a em.submenu-toggler {
+    transition: all 0.2s;
+}
+
+.menu-item div {
+    overflow: hidden;
+    background-color: var(--surface-b);
+}
+
+.menu-item div .menu-item {
+    padding: 4px 0;
+}
+
+.menu-item div .menu-item a {
+    padding-left: 20px;
+}
+
+.menu-item div .menu-item div .menu-item a {
+    padding-left: 30px;
+}
+
+.menu-item.expanded-menu-item>a {
+    border-radius: 6px 6px 0 0;
+    background-color: var(--surface-b);
+}
+
+.menu-item.expanded-menu-item>a em.submenu-toggler {
+    transform: rotate(-180deg);
+    margin-top: -1rem;
+}
+
+.menu-item.expanded-menu-item>div {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+:host-context(.layout-sidebar-active) .menu-item a em.submenu-toggler {
+    display: inline-block;
+}
+
+/* colors  */
+
+.menu-item>a .menu-item-text {
+    color: var(--text-color);
+    transition: color 0.05s;
+}
+
+.menu-item>a:hover {
+    background-color: var(--surface-b);
+}
+
+.menu-item.expanded-menu-item a:hover {
+    background-color: var(--surface-100);
+}
+
+.menu-item>a.active-menu-item .menu-item-text {
+    color: var(--primary-color-text);
+}
+
+.menu-item>a.active-menu-item em {
+    color: var(--primary-color-text);
+}
+
+.menu-item>a.active-menu-item {
+    background-color: var(--primary-color);
+}
+
+.menu-item.expanded-menu-item div .menu-item>a.active-menu-item {
+    background-color: var(--primary-color);
+}

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { HttpErrorHandlerService } from './http-error-handler.service';
-import { APP_CONFIG } from '../app-config';
+import { APP_CONFIG } from '../model/app-config';
 
 @Injectable({
   providedIn: 'root'

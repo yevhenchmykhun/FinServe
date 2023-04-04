@@ -1,0 +1,19 @@
+<div [ngClass]="{'expanded-menu-item': expanded}" class="menu-item">
+  <ng-container *ngIf="!hasChildren; else elseBlock">
+    <a [routerLink]="item.routerLink" routerLinkActive="active-menu-item">
+      <span class="menu-item-text">{{ item.label }}</span>
+      <em [className]="item.icon" class="menu-item-icon"></em>
+    </a>
+  </ng-container>
+  <ng-template #elseBlock>
+    <a (click)="onClick()">
+      <span class="menu-item-text">{{item.label}}</span>
+      <em class="submenu-toggler pi pi-fw pi-angle-down"></em>
+    </a>
+  </ng-template>
+  <div *ngIf="expanded" @inOut>
+    <ng-container *ngFor="let child of item.items">
+      <app-sidebar-menu-item [item]="child"></app-sidebar-menu-item>
+    </ng-container>
+  </div>
+</div>

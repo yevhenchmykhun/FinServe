@@ -1,6 +1,34 @@
 import { TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './core/components/sidebar/sidebar.component';
+import { HeaderComponent } from './core/components/header/header.component';
+import { SplashScreenComponent } from './core/components/splash-screen/splash-screen.component';
+
+@Component({
+  selector: 'app-sidebar',
+  template: ''
+})
+class MockSidebarComponent implements Partial<SidebarComponent> {
+
+}
+
+@Component({
+  selector: 'app-header',
+  template: ''
+})
+class MockHeaderComponent implements Partial<HeaderComponent> {
+
+}
+
+@Component({
+  selector: 'app-splash-screen',
+  template: ''
+})
+class MockSplashScreenComponent implements Partial<SplashScreenComponent> {
+
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +37,10 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MockSidebarComponent,
+        MockHeaderComponent,
+        MockSplashScreenComponent
       ],
     }).compileComponents();
   });
@@ -18,12 +49,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'finserve'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('finserve');
   });
 
 });

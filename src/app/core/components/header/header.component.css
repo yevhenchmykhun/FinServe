@@ -1,0 +1,19 @@
+.layout-header {
+    width: calc(100% - 60px);
+    height: 75px;
+    transition: width .2s;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.layout-header .layout-header-content {
+    height: 100%;
+    padding: 0 .75rem;
+    background-color: var(--primary-color);
+}
+
+:host-context(.layout-wrapper-static) .layout-header {
+    width: calc(100% - 240px);
+}

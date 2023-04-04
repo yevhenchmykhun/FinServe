@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<app-splash-screen *ngIf="showSplashScreen"></app-splash-screen>
+<div class="layout-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="layout-main">
+        <app-header></app-header>
+        <div class="layout-content-wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

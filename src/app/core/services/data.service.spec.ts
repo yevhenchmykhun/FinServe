@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DataService } from './data.service';
 import { HttpErrorHandlerService } from './http-error-handler.service';
-import { APP_CONFIG, AppConfig } from '../app-config';
+import { APP_CONFIG, AppConfig } from '../model/app-config';
 
 describe('Service: Data', () => {
 

@@ -1,6 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
-import { APP_CONFIG } from './app/core/app-config';
+import { APP_CONFIG } from './app/core/model/app-config';
 import { Provider } from '@angular/core';
 
 
