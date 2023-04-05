@@ -9,7 +9,8 @@
     "test": "ng test --reporters=progress --browsers=ChromeHeadless",
     "test-sonar": "ng test --no-watch --code-coverage --reporters=sonarqubeUnit --browsers=ChromeHeadless",
     "sonar": "sonar-scanner",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "mocked-backend": "nodemon mocked-backend/server.js --watch mocked-backend/** --ext js,json"
   },
   "private": true,
   "dependencies": {
@@ -42,12 +43,14 @@
     "@typescript-eslint/parser": "5.48.2",
     "eslint": "^8.33.0",
     "jasmine-core": "~4.5.0",
+    "json-server": "^0.17.3",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "karma-sonarqube-unit-reporter": "^0.0.23",
+    "nodemon": "^2.0.22",
     "sonarqube-scanner": "^3.0.1",
     "typescript": "~4.9.4"
   }

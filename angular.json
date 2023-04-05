@@ -56,7 +56,16 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "assets": [
+                "src/favicon.ico",
+                "src/assets",
+                {
+                  "input": "configs/mocked-backend",
+                  "output": "config/",
+                  "glob": "app.conf.json"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
