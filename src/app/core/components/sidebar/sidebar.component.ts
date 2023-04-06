@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem, PrimeIcons } from 'primeng/api';
+import { UserRole } from '../../model/user-role.enum';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,20 +17,28 @@ export class SidebarComponent {
     {
       label: 'Home',
       routerLink: '/home',
-      icon: PrimeIcons.HOME
-      
+      icon: PrimeIcons.HOME,
+      state: {
+        roles: [UserRole.user]
+      }
     },
-    // {
-    //   label: 'Admin',
-    //   routerLink: '/admin',
-    //   items: [
-    //     {
-    //       label: 'ATS',
-    //       routerLink: '/admin/ats',
-    //       icon: 'pi pi-fw pi-cog'
-    //     }
-    //   ]
-    // }
+    {
+      label: 'Admin',
+      routerLink: '/admin',
+      state: {
+        roles: [UserRole.administrator]
+      },
+      items: [
+        {
+          label: 'ATS',
+          routerLink: '/admin/ats',
+          icon: 'pi pi-fw pi-cog',
+          state: {
+            roles: [UserRole.administrator]
+          },
+        }
+      ]
+    }
   ]
 
   onLockChange(): void {

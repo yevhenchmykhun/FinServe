@@ -1,5 +1,8 @@
 {
     "name": "FinServe",
     "env": "Mocked Backend",
-    "api": "http://localhost:3000/api"
+    "api": "http://localhost:3000/api",
+    "auth": {
+        "api": "http://localhost:3000/api/auth/token"
+    }
 }

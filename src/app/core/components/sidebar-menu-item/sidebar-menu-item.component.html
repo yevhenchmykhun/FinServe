@@ -13,7 +13,7 @@
   </ng-template>
   <div *ngIf="expanded" @inOut>
     <ng-container *ngFor="let child of item.items">
-      <app-sidebar-menu-item [item]="child"></app-sidebar-menu-item>
+      <app-sidebar-menu-item *appHasRoles="item.state?.['roles']" [item]="child"></app-sidebar-menu-item>
     </ng-container>
   </div>
 </div>

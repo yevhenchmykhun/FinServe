@@ -5,11 +5,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { SidebarMenuItemComponent } from './components/sidebar-menu-item/sidebar-menu-item.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     HeaderComponent,

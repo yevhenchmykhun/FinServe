@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AppService } from './core/services/app.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  showSplashScreen = false;
+  private readonly appService = inject(AppService);
+
+  showSplashScreen$ = this.appService.showSplashScreen$.pipe(delay(0));
+
+  showSidebar$ = this.appService.showSidebar$.pipe(delay(0));
 
 }

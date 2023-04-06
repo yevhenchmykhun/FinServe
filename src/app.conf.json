@@ -1,5 +1,8 @@
 {
     "name": "FinServe",
     "env": "$env$",
-    "api": "$api$"
+    "api": "$api$",
+    "auth": {
+        "api": "$auth-api$"
+    }
 }

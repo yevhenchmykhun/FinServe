@@ -6,4 +6,7 @@ export interface AppConfig {
     name: string;
     env: string;
     api: string;
+    auth: {
+        api: string;
+    }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { tap } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -10,10 +12,20 @@ export class HomeComponent implements OnInit {
 
   private readonly dataService = inject(DataService);
 
+  private readonly authService = inject(AuthService);
+
+  data: any;
+
+  loading: any;
+
+  token = this.authService.token;
+
   ngOnInit(): void {
     this.dataService.getBusinessDates()
+    .pipe(tap(() => this.loading = true))
       .subscribe(dates => {
-        console.log(dates);
+        this.data = dates;
+        this.loading = false
       });
   }
 
