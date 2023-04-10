@@ -1,7 +1,7 @@
 import { UserRole } from "./user-role.enum";
 
 export interface AuthToken {
-    name?: string;
+    name: string;
+    expiresAt: number;
     roles?: UserRole[];
-    expiresAt?: number;
   }

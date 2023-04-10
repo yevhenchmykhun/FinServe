@@ -10,6 +10,7 @@ import { ToastModule } from 'primeng/toast';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { LocalStorageService } from './core/services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true
     },
+    LocalStorageService,
     MessageService
   ],
   bootstrap: [

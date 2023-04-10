@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --reporters=progress --browsers=ChromeHeadless",
+    "test": "ng test --no-watch --reporters=progress --browsers=ChromeHeadless",
     "test-sonar": "ng test --no-watch --code-coverage --reporters=sonarqubeUnit --browsers=ChromeHeadless",
     "sonar": "sonar-scanner",
     "lint": "ng lint",

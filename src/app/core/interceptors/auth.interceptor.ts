@@ -5,9 +5,10 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable, switchMap, take, tap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { APP_CONFIG } from '../model/app-config';
+import { AuthToken } from '../model/auth-token';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,34 +19,19 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url === this.appConfig.auth.api) {
-
       return next.handle(request);
     } else {
-
-      if (!this.authService.isTokenExpired()) {
-        return next.handle(this.addAuthHeader(request));
-      }
-
-      if (this.authService.isTokenRefreshing) {
-        return this.authService.tokenRefreshed$
-          .pipe(
-            take(1),
-            switchMap(() => next.handle(this.addAuthHeader(request)))
-          );
-      } else {
-        return this.authService.exchangeToken()
-          .pipe(
-            switchMap(() => next.handle(this.addAuthHeader(request)))
-          );
-      }
+      return this.authService.getToken()
+        .pipe(
+          switchMap(token => next.handle(this.addAuthHeader(request, token)))
+        );
     }
-
   }
 
-  private addAuthHeader(request: HttpRequest<unknown>): HttpRequest<unknown> {
+  private addAuthHeader(request: HttpRequest<unknown>, token: AuthToken | null): HttpRequest<unknown> {
     return request.clone({
       setHeaders: {
-        Authorization: 'Bearer ' + JSON.stringify(this.authService.token)
+        Authorization: 'Bearer ' + JSON.stringify(token)
       }
     });
   }

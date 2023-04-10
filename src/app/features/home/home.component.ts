@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   loading: any;
 
-  token = this.authService.token;
+  // token = this.authService.token;
 
   ngOnInit(): void {
     this.dataService.getBusinessDates()
