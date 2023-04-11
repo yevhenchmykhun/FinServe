@@ -12,29 +12,42 @@ const authMiddleware = (req, res, next) => {
     // check if 'Authorization' header is present
     const header = req.headers.authorization;
     if (!header) {
-      return res.status(401).json({ message: "Authorization header is missing" });
+      return res.status(401)
+        .json({
+          message: "Authorization header is missing"
+        });
     }
-  
+
     // check if token is present
     const token = header.substring(header.indexOf(" ") + 1);
     if (!token) {
-      return res.status(401).json({ message: "Token is missing" });
+      return res.status(401)
+        .json({
+          message: "Token is missing"
+        });
     }
-  
+
     try {
 
       // check if token is not expired
       const decodedToken = JSON.parse(token);
       if (decodedToken.expiresAt < Date.now()) {
-        return res.status(401).json({ message: "Token expired" });
+        return res.status(401)
+          .json({
+            message: "Token expired"
+          });
       }
     } catch (error) {
       console.log(error);
 
       // provided token is not valid
-      return res.status(401).json({ message: "Token is not valid" });
+      return res.status(401)
+        .json({
+          message: "Token is not valid"
+        });
     }
   }
+  
   next();
 }
 
@@ -47,7 +60,7 @@ server.use(authMiddleware);
 server.get('/api/auth/token', (req, res) => {
   const token = {
     name: 'John Doe',
-    roles: ['User'/* , 'Administrator' */],
+    roles: ['User'],
     expiresAt: Date.now() + 1000 * 60 * 15 // now + 15 minutes
   }
   res.status(200).send(token);

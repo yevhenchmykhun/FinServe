@@ -13,6 +13,4 @@ export class AppComponent {
 
   showSplashScreen$ = this.appService.showSplashScreen$.pipe(delay(0));
 
-  showSidebar$ = this.appService.showSidebar$.pipe(delay(0));
-
 }

@@ -19,7 +19,7 @@ export class DataService {
   private readonly handleError = this.httpErrorHandlerService.createHandleError('DataService');
 
   exchangeToken(): Observable<AuthToken | null> {
-    return this.http.get<AuthToken>(`${this.appConfig.api}/auth/token`, {withCredentials: true})
+    return this.http.get<AuthToken>(this.appConfig.auth.api)
       .pipe(
         catchError(this.handleError('getAuthToken', null))
       );
