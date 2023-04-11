@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HasRolesDirective } from './directives/has-roles.directive';
+import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    HasRolesDirective
+    HasRolesDirective,
+    ElapsedTimePipe
   ],
   exports: [
     CommonModule,
-    HasRolesDirective
+    HasRolesDirective,
+    ElapsedTimePipe
   ]
 })
 export class SharedModule { }

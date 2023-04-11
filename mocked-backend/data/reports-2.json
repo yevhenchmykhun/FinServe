@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "SAM/1 Report",
+        "status": "Completed",
+        "startTime": 1681218386183,
+        "endTime": 1681220519097,
+        "runTime": 2132914,
+        "sections": [
+            {
+                "id": 11,
+                "name": "Section F",
+                "status": "Completed",
+                "startTime": 1681218386183,
+                "endTime": 1681219519097,
+                "runTime": 1132914
+            },
+            {
+                "id": 12,
+                "name": "Section V",
+                "status": "Completed",
+                "startTime": 1681218386183,
+                "endTime": 1681220519097,
+                "runTime": 2132914
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "SAM/2 Report",
+        "status": "Completed",
+        "startTime": 1681428386183,
+        "endTime": 1681430497294,
+        "runTime": 2111111,
+        "sections": [
+            {
+                "id": 21,
+                "name": "Section F",
+                "status": "Completed",
+                "startTime": 1681428386183,
+                "endTime": 1681430497294,
+                "runTime": 2111111
+            },
+            {
+                "id": 22,
+                "name": "Section V",
+                "status": "Completed",
+                "startTime": 1681428386183,
+                "endTime": 1681429407294,
+                "runTime": 1021111
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "SAM/3 Report",
+        "status": "Completed",
+        "startTime": 1681428386183,
+        "endTime": 1681430486183,
+        "runTime": 2100000,
+        "sections": [
+            {
+                "id": 31,
+                "name": "Section F",
+                "status": "Completed",
+                "startTime": 1681428386183,
+                "endTime": 1681430480000,
+                "runTime": 2093817
+            },
+            {
+                "id": 32,
+                "name": "Section V",
+                "status": "Completed",
+                "startTime": 1681428386183,
+                "endTime": 1681430486183,
+                "runTime": 2100000
+            }
+        ]
+    }
+]

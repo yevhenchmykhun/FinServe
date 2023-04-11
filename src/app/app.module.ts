@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LocalStorageService } from './core/services/local-storage.service';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,12 @@ import { LocalStorageService } from './core/services/local-storage.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: {
+        dateFormat: 'yyyy-MM-dd HH:mm:ss'
+      }
     },
     LocalStorageService,
     MessageService

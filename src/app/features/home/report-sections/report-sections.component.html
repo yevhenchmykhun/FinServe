@@ -1,0 +1,40 @@
+<p-table #dt [value]="rows" dataKey="id" [rowHover]="true" class="app-table" styleClass="p-datatable-sm">
+
+    <ng-template pTemplate="caption">
+        <h3 class="m-0">{{report.name}} Sections</h3>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <th scope="col" pSortableColumn="name">
+            NAME
+            <p-sortIcon field="name"></p-sortIcon>
+        </th>
+        <th scope="col" pSortableColumn="status">
+            STATUS
+            <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th scope="col" pSortableColumn="startTime">
+            START TIME
+            <p-sortIcon field="startTime"></p-sortIcon>
+        </th>
+        <th scope="col" pSortableColumn="endTime">
+            END TIME
+            <p-sortIcon field="endTime"></p-sortIcon>
+        </th>
+        <th scope="col" pSortableColumn="runTime">
+            RUN TIME
+            <p-sortIcon field="runTime"></p-sortIcon>
+        </th>
+    </ng-template>
+
+    <ng-template let-rowData pTemplate="body">
+        <tr [ngClass]="getTableRowClass(rowData)">
+            <td class="cell-data">{{rowData.name}}</td>
+            <td class="cell-data">{{rowData.status}}</td>
+            <td class="cell-data">{{rowData.startTime | date}}</td>
+            <td class="cell-data">{{rowData.endTime | date}}</td>
+            <td class="cell-data">{{rowData.runTime ?? 0 | elapsedTime}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>

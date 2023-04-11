@@ -10,3 +10,32 @@ body {
     background-color: var(--surface-b);
     font-family: "Helvetica Neue", sans-serif;
 }
+
+.app-table th {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.app-table .column-expand {
+    width: 3rem;
+}
+
+.app-table .cell-data {
+    overflow-wrap: break-word;
+}
+
+.app-table tr.app-table-tr-completed {
+    background-color: var(--green-100);
+}
+
+.app-table .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody tr.app-table-tr-completed:not(.p-highlight):hover {
+    background-color: var(--green-200);
+}
+
+.app-table tr.app-table-tr-failed {
+    background-color: var(--red-100);
+}
+
+.app-table .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody tr.app-table-tr-failed:not(.p-highlight):hover {
+    background-color: var(--red-200);
+}

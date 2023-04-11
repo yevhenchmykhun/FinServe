@@ -71,6 +71,12 @@ server.get('/api/business-dates', (req, res) => {
   res.status(200).send(data);
 });
 
+server.get('/api/reports', (req, res) => {
+  const path = Math.random() < 0.5 ? './data/reports-1.json' : './data/reports-2.json'
+  const data = require(path);
+  res.status(200).send(data);
+});
+
 server.listen(3000, () => {
   console.log('JSON Server is running on port 3000');
 });
