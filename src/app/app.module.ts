@@ -12,6 +12,8 @@ import { RoutingModule } from './routing.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LocalStorageService } from './core/services/local-storage.service';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
+import { TitleStrategy } from '@angular/router';
+import { CustomTitleStrategy } from './core/services/custom-title-strategy';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,10 @@ import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
     ToastModule
   ],
   providers: [
+    {
+      provide: TitleStrategy,
+      useClass: CustomTitleStrategy
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
