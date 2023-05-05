@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <app-splash-screen *ngIf="showSplashScreen$ | async"></app-splash-screen>
-<div class="layout-wrapper">
+<div [ngClass]="{ 'layout-wrapper-static': sidebarLocked$ | async}" class="layout-wrapper">
     <app-sidebar></app-sidebar>
     <div class="layout-main">
         <app-header></app-header>

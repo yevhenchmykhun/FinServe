@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MenuItem, PrimeIcons } from 'primeng/api';
 import { UserRole } from '../../model/user-role.enum';
+import { Store } from '@ngrx/store';
+import { changeSidebarLocked, getSidebarLocked } from '../../state/core.reducer';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   hovered = false;
 
   locked = false;
+
+  private readonly store = inject(Store);
 
   items: MenuItem[] = [
     {
@@ -41,8 +46,15 @@ export class SidebarComponent {
     }
   ]
 
+  ngOnInit(): void {
+    this.store.select(getSidebarLocked)
+      .pipe(take(1))
+      .subscribe(value => this.locked = value);
+  }
+
   onLockChange(): void {
     this.locked = !this.locked;
+    this.store.dispatch(changeSidebarLocked({ sidebarLocked: this.locked }));
   }
 
 }

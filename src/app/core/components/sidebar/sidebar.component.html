@@ -1,9 +1,9 @@
 <div class="layout-sidebar" [ngClass]="{ 'layout-sidebar-active': hovered }" (mouseenter)="hovered = true"
   (mouseleave)="hovered = false">
   <div class="sidebar-logo">
-    <!-- <a (click)="onLockChange()" class="sidebar-pin" title="Toggle Menu">
+    <a (click)="onLockChange()" class="sidebar-pin" title="Toggle Menu">
       <em [ngClass]="{'pi-lock-open': !locked, 'pi-lock': locked}" class="pi"></em>
-    </a> -->
+    </a>
     <a routerLink="/home">
       <img alt="logo" src="assets/logo.svg" />
       <span class="app-name">FinServe</span>

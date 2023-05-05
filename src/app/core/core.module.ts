@@ -6,12 +6,15 @@ import { RouterModule } from '@angular/router';
 import { SidebarMenuItemComponent } from './components/sidebar-menu-item/sidebar-menu-item.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 import { SharedModule } from '../shared/shared.module';
+import { coreReducer } from './state/core.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('core', coreReducer)
   ],
   declarations: [
     HeaderComponent,

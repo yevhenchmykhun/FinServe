@@ -14,6 +14,7 @@ import { LocalStorageService } from './core/services/local-storage.service';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { TitleStrategy } from '@angular/router';
 import { CustomTitleStrategy } from './core/services/custom-title-strategy';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { CustomTitleStrategy } from './core/services/custom-title-strategy';
 
     // PrimeNG modules
     MessageModule,
-    ToastModule
+    ToastModule,
+
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     {
