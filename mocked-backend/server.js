@@ -47,7 +47,7 @@ const authMiddleware = (req, res, next) => {
         });
     }
   }
-  
+
   next();
 }
 
@@ -55,12 +55,12 @@ const server = jsonServer.create();
 server.use(jsonServer.defaults());
 server.use(delayMiddleware);
 server.use(authMiddleware);
-// server.use(jsonServer.bodyParser);
+server.use(jsonServer.bodyParser);
 
 server.get('/api/auth/token', (req, res) => {
   const token = {
     name: 'John Doe',
-    roles: ['User'],
+    roles: ['User', 'Administrator'],
     expiresAt: Date.now() + 1000 * 60 * 15 // now + 15 minutes
   }
   res.status(200).send(token);
@@ -75,6 +75,19 @@ server.get('/api/reports', (req, res) => {
   const path = Math.random() < 0.5 ? './data/reports-1.json' : './data/reports-2.json'
   const data = require(path);
   res.status(200).send(data);
+});
+
+server.get('/api/tableau/workbooks', (req, res) => {
+  const data = require('./data/tableau-workbooks.json');
+  res.status(200).send(data);
+});
+
+server.post('/api/tableau/workbooks/refresh', (req, res) => {
+  const data = require('./data/tableau-workbooks.json');
+  const refreshedWorkbooks = data
+    .filter(workbook => req.body.includes(workbook.id))
+    .map(workbook => ({ ...workbook, refreshStatus: 'In progress', refreshTime: Date.now() }));
+  res.status(200).send(refreshedWorkbooks);
 });
 
 server.listen(3000, () => {

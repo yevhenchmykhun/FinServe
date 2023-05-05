@@ -11,9 +11,15 @@ body {
     font-family: "Helvetica Neue", sans-serif;
 }
 
+// app table
+
 .app-table th {
     padding: 0.5rem;
     text-align: left;
+}
+
+.app-table .column-checkbox {
+    width: 3rem;
 }
 
 .app-table .column-expand {
@@ -24,12 +30,24 @@ body {
     overflow-wrap: break-word;
 }
 
+.app-table .p-datatable .p-paginator-top {
+    padding: 0 0 0.75rem 0;
+}
+
 .app-table tr.app-table-tr-completed {
     background-color: var(--green-100);
 }
 
 .app-table .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody tr.app-table-tr-completed:not(.p-highlight):hover {
     background-color: var(--green-200);
+}
+
+.app-table tr.app-table-tr-in-progress {
+    background-color: var(--yellow-100);
+}
+
+.app-table .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody tr.app-table-tr-in-progress:not(.p-highlight):hover {
+    background-color: var(--yellow-200);
 }
 
 .app-table tr.app-table-tr-failed {

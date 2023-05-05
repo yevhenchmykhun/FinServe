@@ -1,0 +1,29 @@
+[
+    {
+        "id": "5a6d868a-f455-4a40-9f38-ffa243add4e0",
+        "url": "https://localhost/workbooks/1",
+        "name": "John's Workbook",
+        "projectName": "Important Project",
+        "refreshStatus": "Success",
+        "refreshTime": 1683285185164,
+        "refreshJobId": "98dfdda7-a68e-4482-a725-6fafe9b772d3"
+    },
+    {
+        "id": "3101ea26-f9df-4645-95bd-5d51abb19421",
+        "url": "https://localhost/workbooks/2",
+        "name": "Mike's Workbook",
+        "projectName": "Important Project",
+        "refreshStatus": "In progress",
+        "refreshTime": 1683285195571,
+        "refreshJobId": "b8fccd3c-fe92-4e52-96cc-cfb728aa0d7f"
+    },
+    {
+        "id": "305a44f5-2c46-4b45-a179-0b9ad5c9cccf",
+        "url": "https://localhost/workbooks/3",
+        "name": "Jill's Workbook",
+        "projectName": "Important Project",
+        "refreshStatus": "Success",
+        "refreshTime": 1683285205378,
+        "refreshJobId": "c93f616e-eeda-4656-b392-d12240ebf0c4"
+    }
+]

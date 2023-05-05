@@ -5,6 +5,7 @@ import { HttpErrorHandlerService } from './http-error-handler.service';
 import { APP_CONFIG } from '../model/app-config';
 import { AuthToken } from '../model/auth-token';
 import { Report } from 'src/app/features/home/model/report';
+import { TableauWorkbook } from 'src/app/features/tableau-workbooks/model/tableau-workbook';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,21 @@ export class DataService {
     return this.http.get<Report[]>(`${this.appConfig.api}/reports`)
       .pipe(
         catchError(this.handleError('getReports', []))
+      );
+  }
+
+  getTableauWorkbooks(): Observable<TableauWorkbook[]> {
+    return this.http.get<TableauWorkbook[]>(`${this.appConfig.api}/tableau/workbooks`)
+      .pipe(
+        catchError(this.handleError('getTableauWorkbooks', []))
+      );
+  }
+
+  refreshTableauWorkbooks(ids: string[]): Observable<TableauWorkbook[]> {
+    const url = `${this.appConfig.api}/tableau/workbooks/refresh`;
+    return this.http.post<TableauWorkbook[]>(url, ids)
+      .pipe(
+        catchError(this.handleError('refreshTableauWorkbooks', []))
       );
   }
 

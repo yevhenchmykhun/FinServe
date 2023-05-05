@@ -1,3 +1,6 @@
+import { SelectItem } from "primeng/api/selectitem";
+
+
 export const getElapsedTimeAsString = (timeDiff: number) => {
 
     // Convert from milliseconds to seconds
@@ -43,3 +46,22 @@ export const getElapsedTimeAsString = (timeDiff: number) => {
         return minutesAsString + ':' + secondsAsString;
     }
 }
+
+export const epochMatchModeOptions: SelectItem<string>[] = [
+    {
+        label: 'Time is',
+        value: 'epochIs'
+    },
+    {
+        label: 'Time is not',
+        value: 'epochIsNot'
+    },
+    {
+        label: 'Time before',
+        value: 'epochBefore'
+    },
+    {
+        label: 'Time after',
+        value: 'epochAfter'
+    }
+]

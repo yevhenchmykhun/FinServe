@@ -28,6 +28,14 @@ export class SidebarComponent implements OnInit {
       }
     },
     {
+      label: 'Tableau Workbooks',
+      routerLink: '/tableau-workbooks',
+      icon: PrimeIcons.FILE,
+      state: {
+        roles: [UserRole.user]
+      }
+    },
+    {
       label: 'Admin',
       routerLink: '/admin',
       state: {

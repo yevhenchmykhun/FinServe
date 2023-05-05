@@ -1,0 +1,87 @@
+<p-table #dt [paginator]="true" [(selection)]="selectedRows" [rowsPerPageOptions]="[10, 25, 50, 100]" [rows]="10"
+    [showCurrentPageReport]="true" [value]="rows" [rowHover]="true" [multiSortMeta]="sortMeta"
+    [rowSelectable]="isRowSelectable.bind(this)" dataKey="id" class="app-table" paginatorPosition="top"
+    sortMode="multiple" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th [hidden]="!(hasAdminRole() | async)" class="column-checkbox" scope="col"></th>
+            <th class="column-data" scope="col" pSortableColumn="name">
+                NAME
+                <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th class="column-data" scope="col" pSortableColumn="projectName">
+                PROJECT NAME
+                <p-sortIcon field="projectName"></p-sortIcon>
+            </th>
+            <th class="column-data" scope="col" pSortableColumn="refreshStatus">
+                REFRESH STATUS
+                <p-sortIcon field="refreshStatus"></p-sortIcon>
+            </th>
+            <th class="column-data" scope="col" pSortableColumn="refreshTime">
+                REFRESH TIME
+                <p-sortIcon field="refreshTime"></p-sortIcon>
+            </th>
+            <th class="column-data" scope="col" pSortableColumn="refreshJobId">
+                REFRESH JOB ID
+                <p-sortIcon field="refreshJobId"></p-sortIcon>
+            </th>
+        </tr>
+        <tr>
+            <th [hidden]="!(hasAdminRole() | async)" class="column-checkbox" scope="col">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th scope="col">
+                <p-columnFilter #nameFilter (input)="nameFilter.applyFilter()" [showMenu]="false" field="name"
+                    matchMode="contains" placeholder="Search..."></p-columnFilter>
+            </th>
+            <th scope="col">
+                <p-columnFilter #projectNameFilter (input)="projectNameFilter.applyFilter()" [showMenu]="false"
+                    field="projectName" matchMode="contains" placeholder="Search..."></p-columnFilter>
+            </th>
+            <th scope="col">
+                <p-columnFilter #refreshStatusFilter (input)="refreshStatusFilter.applyFilter()" [showMenu]="false"
+                    field="refreshStatus" matchMode="contains" placeholder="Search..."></p-columnFilter>
+            </th>
+            <th scope="col">
+                <p-columnFilter #refreshTimeFilter [showApplyButton]="false" [matchModeOptions]="epochMatchModeOptions"
+                    field="refreshTime" type="date" display="menu">
+                    <ng-template let-value let-filter="filterCallback" pTemplate="filter">
+                        <p-calendar (onSelect)="filter($event)" [ngModel]="value" [showSeconds]="true" [showTime]="true"
+                            dateFormat="yy-mm-dd"></p-calendar>
+                    </ng-template>
+                </p-columnFilter>
+            </th>
+            <th scope="col">
+                <p-columnFilter #refreshJobIdFilter (input)="refreshJobIdFilter.applyFilter()" [showMenu]="false"
+                    field="refreshJobId" matchMode="contains" placeholder="Search..."></p-columnFilter>
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template let-rowData pTemplate="body">
+        <tr [ngClass]="getTableRowClass(rowData)">
+            <td [hidden]="!(hasAdminRole() | async)">
+                <p-tableCheckbox [value]="rowData" [disabled]="isInProgress(rowData)"></p-tableCheckbox>
+            </td>
+            <td class="cell-data">
+                <a [href]="rowData.url">
+                    {{rowData.name}}
+                </a>
+            </td>
+            <td class="cell-data">{{rowData.projectName}}</td>
+            <td class="cell-data">{{rowData.refreshStatus}}</td>
+            <td class="cell-data">{{rowData.refreshTime | date}}</td>
+            <td class="cell-data">{{rowData.refreshJobId}}</td>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorleft">
+        <ng-container *ngIf="hasAdminRole() | async">
+            <button (click)="onRefresh()" [disabled]="!isRefreshButtonEnabled()" [loading]="refreshing" label="Refresh"
+                pButton type="button">
+            </button>
+        </ng-container>
+    </ng-template>
+
+</p-table>
