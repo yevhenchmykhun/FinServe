@@ -5,6 +5,7 @@ import { ErrorComponent } from './features/error/error.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { UserRole } from './core/model/user-role.enum';
 import { TableauWorkbooksComponent } from './features/tableau-workbooks/tableau-workbooks.component';
+import { AutoTriggerSetupComponent } from './features/auto-trigger-setup/auto-trigger-setup.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,17 @@ const routes: Routes = [
     },
     loadChildren: () => import('./features/tableau-workbooks/tableau-workbooks.module')
       .then(m => m.TableauWorkbooksModule)
+  },
+  {
+    title: 'Auto Trigger Setup',
+    path: 'admin/auto-trigger-setup',
+    component: AutoTriggerSetupComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: [UserRole.administrator]
+    },
+    loadChildren: () => import('./features/auto-trigger-setup/auto-trigger-setup.module')
+      .then(m => m.AutoTriggerSetupModule)
   },
   {
     title: 'Error',

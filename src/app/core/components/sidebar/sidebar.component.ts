@@ -36,16 +36,16 @@ export class SidebarComponent implements OnInit {
       }
     },
     {
-      label: 'Admin',
+      label: 'Administration',
       routerLink: '/admin',
       state: {
         roles: [UserRole.administrator]
       },
       items: [
         {
-          label: 'ATS',
-          routerLink: '/admin/ats',
-          icon: 'pi pi-fw pi-cog',
+          label: 'Auto Trigger Setup',
+          routerLink: '/admin/auto-trigger-setup',
+          icon: PrimeIcons.COG,
           state: {
             roles: [UserRole.administrator]
           },
